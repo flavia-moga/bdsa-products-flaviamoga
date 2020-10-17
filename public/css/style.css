@@ -20,7 +20,7 @@ em,i {
     background: #fff;
 }
 header {
-    background: #ccc;
+    background: #8ec3eb;
 }
 header h1 {
     margin: 0;
@@ -31,7 +31,7 @@ header h1 {
 #navigation {
     float: left;
     width: 100%;
-    background: #333;
+    background: #2a6592;
 }
 #navigation ul {
     margin: 0;
@@ -59,7 +59,7 @@ main {
 main > section {
     float: left;
     width: 100%;
-    background: #f2f2f2;
+    background: #f6d8ac;
 }
 main > section > .sidebar {
     display: inline;
@@ -88,7 +88,7 @@ main > section > .sidebar.left ul li {
     -moz-box-sizing: border-box;
     background: #fff;
     border-width: 0 1px 0 1px;
-    border-color: #ccc;
+    border-color: #2a6592;
     border-style: solid;
 }
 #content h2 {
@@ -102,7 +102,7 @@ main > section > .sidebar.right h3 {
 }
 footer {
     clear: both;
-    background: #ccc;
+    background: #8ec3eb;
     text-align: left;
     padding: 20px;
     height: 1%;

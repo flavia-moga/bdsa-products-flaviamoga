@@ -9,7 +9,7 @@ $(document).ready(function () {
 function readRecords() {
     $.get("/categories/", {}, function (data, status) {
         data.forEach(function(value) {
-            var row = '<tr id="row_id_'+ value.id +'">'
+            var row = '<tr id="row_id_'+ value.id+'">'
             			+ displayColumns(value)
         				+ '</tr>';
             $('#articles').append(row);
@@ -19,20 +19,20 @@ function readRecords() {
 
 function displayColumns(value) {
     return 	'<td>'+value.id+'</td>'
-            + '<td class="name">'+value.name+'</td>'
-			+ '<td class="description">'+value.description+'</td>'
+            + '<td class="categorie">'+value.categorie+'</td>'
+			+ '<td class="subcategorie">'+value.subcategorie+'</td>'
 			+ '<td align="center">'
-			+	'<button onclick="viewRecord('+ value.id +')" class="btn btn-edit">Update</button>'
+			+	'<button onclick="viewRecord('+ value.id+')" class="btn btn-edit">Update</button>'
 			+ '</td>'
 			+ '<td align="center">'
-			+	'<button onclick="deleteRecord('+ value.id +')" class="btn btn-danger">Delete</button>'
+			+	'<button onclick="deleteRecord('+ value.id+')" class="btn btn-danger">Delete</button>'
 			+ '</td>';
 }
 
 function addRecord() {
     $('#id').val('');
-    $('#name').val('');
-    $('#description').val('');
+    $('#categorie').val('');
+    $('#subcategorie').val('');
     
     $('#myModalLabel').html('Add New Category');
   //  $('#add_new_record_modal').modal('show');
@@ -43,8 +43,8 @@ function viewRecord(id) {
     
     $.get(url, {}, function (data, status) {
         //bind the values to the form fields
-        $('#name').val(data.name);
-        $('#description').val(data.description);
+        $('#categorie').val(data.categorie);
+        $('#subcategorie').val(data.subcategorie);
 
         $('#id').val(id);
         $('#myModalLabel').html('Edit Category');
@@ -73,7 +73,7 @@ function createRecord(formData) {
         success: function(data) {
             $('#add_new_record_modal').modal('hide');
             
-            var row = '<tr id="row_id_'+ data.id +'">'
+            var row = '<tr id="row_id_'+ data.id+'">'
             			+ displayColumns(data)
         				+ '</tr>';
             $('#articles').append(row);
@@ -90,8 +90,8 @@ function updateRecord(formData) {
         },
         data: formData,
         success: function(data) {
-            $('#row_id_'+formData.id+'>td.name').html(formData.name);
-            $('#row_id_'+formData.id+'>td.description').html(formData.description);
+            $('#row_id_'+formData.id+'>td.categorie').html(formData.categorie);
+            $('#row_id_'+formData.id+'>td.subcategorie').html(formData.subcategorie);
             $('#add_new_record_modal').modal('hide');
         } 
     });

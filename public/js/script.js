@@ -7,7 +7,7 @@ function showCategories() {
     $.get( "/categories", function( data ) {
         var html = ''
         data.forEach(function(category) {
-            html = html + '<li><a href="#" onClick="showProducts('+category.id+')">'+category.name+'</a></li>'
+            html = html + '<li><a href="#" onClick="showProducts('+category.id+')">'+category.categorie+'</a></li>'
         })
         $('#categories').html(html)
     });
@@ -25,22 +25,14 @@ function showProducts(categoryId) {
         data.forEach(
             function(product) {
                 html = html + '<div class="product">'
-                  +  '<h2>'+product.name+'</h2>'
-                  +  '<p>'+product.description+'</p>'
-                  +  '<p>Pret: '+product.pret+'</p>'
-                  +  '<p>Categorie: '+product.category.name+'</p>'
+                  +  '<h2>'+product.nume+'</h2>'
+                  +  '<p>Pret: '+product.pret_achiz+'</p>'
+                  +  '<p>Categorie: '+product.category.categorie+'</p>'
                 + '</div>';
                 
-                html = html + '<h3>Product reviews</h3>'
+               
                 
-                if(product.reviews) {
-                    product.reviews.forEach(
-                        function(reviewData) {
-                            html = html + reviewData.name + ' ' + reviewData.content;
-                            html = html + '<br>';
-                        }
-                    )
-                }
+                
                 
                 
             }

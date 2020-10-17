@@ -9,7 +9,7 @@ $(document).ready(function () {
 function readRecords() {
     $.get("/products/", {}, function (data, status) {
         data.forEach(function(value) {
-            var row = '<tr id="row_id_'+ value.id +'">'
+            var row = '<tr id="row_id_'+ value.id+'">'
             			+ displayColumns(value)
         				+ '</tr>';
             $('#articles').append(row);
@@ -19,9 +19,9 @@ function readRecords() {
 
 function displayColumns(value) {
     return 	'<td>'+value.id+'</td>'
-            + '<td class="category_id">'+ (value.category ? value.category.name : value.category_id) +'</td>'
-            + '<td class="name">'+value.name+'</td>'
-			+ '<td class="description">'+value.description+'</td>'
+            + '<td class="id_categ">'+ (value.category ? value.category.categorie : value.id_categ) +'</td>'
+            + '<td class="nume">'+value.nume+'</td>'
+			+ '<td class="pret_achiz">'+value.pret_achiz+'</td>'
 			+ '<td align="center">'
 			+	'<button onclick="viewRecord('+ value.id +')" class="btn btn-edit">Update</button>'
 			+ '</td>'
@@ -32,8 +32,8 @@ function displayColumns(value) {
 
 function addRecord() {
     $('#id').val('');
-    $('#category_id').val('');
-    $('#name').val('');
+    $('#id_categ').val('');
+    $('#nume').val('');
     $('#description').val('');
     
     $('#myModalLabel').html('Add New Product');
@@ -44,10 +44,10 @@ function viewRecord(id) {
     
     $.get(url, {}, function (data, status) {
         //bind the values to the form fields
-        $('#category_id').val(data.category_id);
-        $('#name').val(data.name);
-        $('#description').val(data.description);
-        $('#price').val(data.price);
+        $('#id_categ').val(data.id_categ);
+        $('#nume').val(data.nume);
+        $('#pret_achiz').val(data.pret_achiz);
+        $('#adaos_com').val(data.adaos_com);
         $('#id').val(id);
         $('#myModalLabel').html('Edit Product');
         
@@ -95,9 +95,9 @@ function updateRecord(formData) {
         },
         data: formData,
         success: function(data) {
-            $('#row_id_'+formData.id+'>td.category_id').html(formData.category_id);
-            $('#row_id_'+formData.id+'>td.name').html(formData.name);
-            $('#row_id_'+formData.id+'>td.description').html(formData.description);
+            $('#row_id_'+formData.id+'>td.category_id').html(formData.id_categ);
+            $('#row_id_'+formData.id+'>td.name').html(formData.nume);
+            $('#row_id_'+formData.id+'>td.description').html(formData.pret_achiz);
             $('#add_new_record_modal').modal('hide');
         } 
     });
